@@ -1,6 +1,6 @@
 {
   "name": "hm-ihp",
-  "version": "1.0.11",
+  "version": "1.0.10",
   "description": "Horizon Input App",
   "main": "main.js",
   "type": "module",
@@ -26,7 +26,7 @@
     "npmRebuild": false,
     "appId": "com.horizonmods.inputapp",
     "productName": "HorizonMods Input App",
-    "artifactName": "InputApp.${ext}",
+    "artifactName": "InputApp_setup.${ext}",
     "win": {
       "target": "nsis",
       "icon": "build/icon.ico"
@@ -39,3 +39,5 @@
     }
   }
 }
+
+
