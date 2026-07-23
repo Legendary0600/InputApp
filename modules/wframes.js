@@ -17,6 +17,7 @@ export const main = () => {
 
     screen.loadFile('index.html');
     
+    console.log("PACKED APP", app.isPackaged);
     if (!app.isPackaged) {
         screen.webContents.openDevTools();
     };
