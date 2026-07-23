@@ -1,24 +1,26 @@
 {
   "name": "hm-ihp",
-  "version": "1.0.11",
+  "version": "1.0.13",
   "description": "Horizon Input App",
   "main": "main.js",
   "type": "module",
   "scripts": {
     "start": "cls && electron .",
-    "build": "electron-builder --publish always"
+    "build2": "electron-builder --publish always",
+    "build": "electron-builder --publish onTag",
+    "dist": "electron-builder"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "electron": "^41.2.0",
-    "electron-builder": "^26.8.1"
+    "electron-builder": "^6.8.1"
   },
   "dependencies": {
-    "@kmamal/sdl": "0.11.13",
-    "discord-rpc": "4.0.1",
-    "electron-updater": "6.8.9",
-    "ws": "8.20.0"
+    "@kmamal/sdl": "^0.11.13",
+    "discord-rpc": "^4.0.1",
+    "electron-updater": "^6.8.9",
+    "ws": "^8.20.0"
   },
   "build": {
     "npmRebuild": false,
