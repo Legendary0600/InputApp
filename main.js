@@ -55,7 +55,7 @@ function checkForUpdates(screen) {
 
         autoUpdater.on("update-not-available", () => {
             screen.webContents.send("status", L("INTERNAL_NO_UPDATES_FOUND"));
-            // respond(false);
+            respond(false);
         });
 
         autoUpdater.on("download-progress", (progress) => {
@@ -65,7 +65,7 @@ function checkForUpdates(screen) {
         autoUpdater.on("update-downloaded", (info) => {
             screen.webContents.send( "status", L("INTERNAL_UPDATE_READY", null, {version: info.version}));
             screen.webContents.send( "progress", false, false);
-            // respond(true);
+            respond(true);
         });
 
         autoUpdater.on("error", (err) => {
