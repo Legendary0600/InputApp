@@ -19,7 +19,6 @@ cdpaths.dlocales = path.join(cdpaths.app, "Config", "locales");
 
 globalThis.Config = await loadjson(cdpaths.config, {});
 Config.language ||= "en-US";
-Config.devmode ??=false;
 Config.cfx ??= {};
 Config.cfx.port ??=3001;
 Config.discordPresence??={};

@@ -55,7 +55,7 @@ function checkForUpdates(screen) {
 
         autoUpdater.on("update-not-available", () => {
             screen.webContents.send("status", L("INTERNAL_NO_UPDATES_FOUND"));
-            respond(false);
+            // respond(false);
         });
 
         autoUpdater.on("download-progress", (progress) => {
@@ -65,7 +65,7 @@ function checkForUpdates(screen) {
         autoUpdater.on("update-downloaded", (info) => {
             screen.webContents.send( "status", L("INTERNAL_UPDATE_READY", null, {version: info.version}));
             screen.webContents.send( "progress", false, false);
-            respond(true);
+            // respond(true);
         });
 
         autoUpdater.on("error", (err) => {
@@ -74,21 +74,20 @@ function checkForUpdates(screen) {
         });
 
         screen.once("ready-to-show", () => {
+            screen.webContents.send("version", app.getVersion());
             setTimeout(() => autoUpdater.checkForUpdates(), 1000);
         });
-
-        screen.webContents.send("version", app.getVersion());
     });
 }
 
 app.whenReady().then(async () => {
     const splashScreen = wsframes.splashScreen();
     const response = await checkForUpdates(splashScreen);
-    if (response) return autoUpdater.quitAndInstall();
+    if (app.isPackaged && response) return autoUpdater.quitAndInstall();
 
     new Notification({
         title: 'HorizonMods',
-        body: 'Welcome on our Skys' + (Config.devmode ? '\n you are running a Development BUILD' : `\nyou are running version ${app.getVersion()}`)
+        body: 'Welcome on our Skys' + (app.isPackaged ? `\n you are running a Development BUILD\nversion: ${app.getVersion()}` : `\nyou are running version ${app.getVersion()}`)
     }).show();
 
 

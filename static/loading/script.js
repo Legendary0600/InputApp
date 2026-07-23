@@ -23,8 +23,9 @@ window.CoreSplash.on("status", (event, state) => {
     statusText.textContent=state;
 });
 
-window.CoreSplash.on("version", (event, state) => {
-    version.textContent="Version "+state;
+window.CoreSplash.on("version", (event, v) => {
+    console.log(v, "HELLLLLLLO");
+    version.textContent=`Version ${v}`;
 });
 
 window.CoreSplash.on("progress", (event, percent, show) => {
