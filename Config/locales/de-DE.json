@@ -121,5 +121,5 @@
     ,"INTERNAL_CHECK_FOR_UPDATES": "Suche nach Updates..."
     ,"INTERNAL_UPDATE_FOUND": "Update gefunden: {{VERSION}}"
     ,"INTERNAL_NO_UPDATES_FOUND": "Keine Updates verfügbar"
-    ,"INTERNAL_UPDATE_READY": "`Update {{VERSION}} fertig geladen`"
+    ,"INTERNAL_UPDATE_READY": "Update {{VERSION}} fertig geladen"
 }

@@ -16,8 +16,6 @@ export const main = () => {
     });
 
     screen.loadFile('index.html');
-    
-    console.log("PACKED APP", app.isPackaged);
     if (!app.isPackaged) {
         screen.webContents.openDevTools();
     };
@@ -31,8 +29,8 @@ export const main = () => {
 
 export const splashScreen = () => {
     const screen = new BrowserWindow({
-        width: 400,
-        height: 300,
+        width: 800,
+        height: 400,
         frame: false,
         show: false,
         webPreferences: {
@@ -42,8 +40,6 @@ export const splashScreen = () => {
     });
 
     screen.loadFile("loading.html");
-    screen.webContents.openDevTools();
-
     screen.on("ready-to-show", () => {
         screen.show();
     });
