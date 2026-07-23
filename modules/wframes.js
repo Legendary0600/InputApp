@@ -20,18 +20,26 @@ export const main = () => {
     return screen;
 }
 
-export const loading = () => {
+export const splashScreen = () => {
     const screen = new BrowserWindow({
-        width: 400,
-        height: 300,
+        // width: 400,
+        // height: 300,
+        width: 1200,
+        height: 800,
         frame: false,
-        show: false
+        show: false,
+        webPreferences: {
+            preload: app.getAppPath() + '/static/loading/preload.js',
+            contextIsolation: true
+        }
     });
 
     screen.loadFile("loading.html");
+    screen.webContents.openDevTools();
 
     screen.on("ready-to-show", () => {
         screen.show();
     });
+
     return screen;
 }

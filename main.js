@@ -21,28 +21,105 @@ import os from "os";
 import loadJson from "./modules/loadjson.js";
 
 const {autoUpdater} = updater;
+autoUpdater.autoDownload = false;
 
-autoUpdater.on("checking-for-update", () => {
-    console.log("Suche nach Updates...");
-});
-
-autoUpdater.on("update-available", (info) => {
-    console.log("Update gefunden:", info.version);
-});
-
-autoUpdater.on("update-not-available", () => {
-    console.log("Keine Updates verfügbar");
-});
-
-autoUpdater.on("error", (err) => {
-    console.error("Updater Fehler:", err);
-});
-
-autoUpdater.forceDevUpdateConfig = true;
-autoUpdater.checkForUpdates();
+if (!app.isPackaged) {
+    autoUpdater.forceDevUpdateConfig = true;
+};
 
 
 let mainWindow;
+
+
+app.on("before-quit", (e) => {
+    // cDevice.Slots.forEach((entry, slot) => {
+    //     if (!entry?.device) return;
+    //     entry.device.removeAllListeners("data");
+    //     entry.device.close();
+    // });
+});
+
+app.on("window-all-closed", () => {
+    // macOS Ausnahme
+    if (process.platform !== "darwin") {
+        app.quit();
+    };
+});
+
+let pcd829 = Date.now();
+
+function checkForUpdates(screen) {
+    return new Promise((resolve) => {
+        const respond = (val) => setTimeout(() => resolve(val), 1000);
+
+        autoUpdater.on("checking-for-update", () => {
+            screen.webContents.send("status", "Suche nach Updates...");
+        });
+
+        autoUpdater.on("update-available", (info) => {
+            screen.webContents.send("status", `Update gefunden: ${info.version}`);
+            setTimeout(() => autoUpdater.downloadUpdate(), 1000);
+        });
+
+        autoUpdater.on("update-not-available", () => {
+            screen.webContents.send("status", "Keine Updates verfügbar");
+            respond(false);
+        });
+
+        autoUpdater.on("download-progress", (progress) => {
+            console.log("progress", progress);
+            screen.webContents.send( "progress", progress.percent, true);
+        });
+
+        autoUpdater.on("update-downloaded", (info) => {
+            screen.webContents.send( "status", `Update ${info.version} fertig geladen` );
+            screen.webContents.send( "progress", false, false);
+            respond(true);
+        });
+
+        autoUpdater.on("error", (err) => {
+            console.error("Updater Fehler:", err);
+            respond(false);
+        });
+
+        screen.once("ready-to-show", () => {
+            setTimeout(() => autoUpdater.checkForUpdates(), 1000);
+        });
+
+        screen.webContents.send("version", app.getVersion());
+    });
+}
+
+app.whenReady().then(async () => {
+    const splashScreen = wsframes.splashScreen();
+    const response = await checkForUpdates(splashScreen);
+    if (response) return autoUpdater.quitAndInstall();
+
+    new Notification({
+        title: 'HorizonMods',
+        body: 'Welcome on our Skys' + (Config.devmode ? '\n you are running a Development BUILD' : `\nyou are running version ${Config.version}`)
+    }).show();
+
+
+    let pcd830 = Date.now();
+    try {mainWindow = wsframes.main();}
+    catch (error) {console.error("mainWindow", error);}
+    
+    splashScreen.destroy();
+    mainWindow.show();
+
+    mainWindow.webContents.on("did-fail-load", (e, code, desc) => {
+        console.error("Load Fehler:", code, desc);
+    });
+    
+    for (const [, device] of Object.entries(ccg.deviceList.data)) {
+        RegisterDevice(device);
+    }
+
+    try {wss.startServer()} catch {};
+});
+
+
 
 ipcMain.on("system:reloadUI", () => {
     mainWindow.reload();
@@ -50,7 +127,7 @@ ipcMain.on("system:reloadUI", () => {
 
 ipcMain.on("system:restart", () => {
     app.relaunch();
-    app.exit(0);
+    app.quit();
 });
 
 ipcMain.handle("requestData", (event, name, options) => {
@@ -132,112 +209,8 @@ ipcMain.on("setLang", (event, lang) => {
     app.exit(0);
 });
 
-app.on("window-all-closed", () => {
-    // macOS Ausnahme
-    if (process.platform !== "darwin") {
-        app.quit();
-    };
-});
-
 ipcMain.on("openExternal", (event, url) => {
     shell.openExternal(url);
-});
-
-let lastdetectInput = null;
-
-ipcMain.on("canceldI", () => {});
-ipcMain.on("deletedI", (event, data) => {});
-
-ipcMain.handle("detectInput", async (event, name) => {
-    if (lastdetectInput === name) {
-        lastdetectInput = null;
-        dct.clean();
-        return {type: "cancel"}
-    };
-
-    const active = []
-    cDevice.Slots.forEach((entry, slot) => {
-        if (!entry?.device) return;
-        active.push({slot, device: entry.device, info: entry.info});
-    });
-
-    if (!active.length) return { type: "error", error: L("detectInputE0") };
-
-    const resp = await dct.detectInput3(active);
-    if (lastdetectInput === name) {
-        lastdetectInput = null;
-    };
-
-    if (!resp) return { type: "error", error: L("detectInputE1") };
-    const sl = cDevice.Slots[resp.slot]
-    if (!sl) return { type: "error", error: L("detectInputE2") };
-    
-    ccg.setMapping({
-        productId: sl.info.productId,
-        vendorId: sl.info.vendorId,
-        key: resp.key,
-        name
-    })
-
-    return {
-        type: "success",
-        name: resp?.name
-    }
-});
-
-
-app.on("before-quit", (e) => {
-    // cDevice.Slots.forEach((entry, slot) => {
-    //     if (!entry?.device) return;
-    //     entry.device.removeAllListeners("data");
-    //     entry.device.close();
-    // });
-});
-
-let pcd829 = Date.now();
-app.whenReady().then(async () => {
-    const wsf = wsframes.loading();
-
-    new Notification({
-        title: 'HorizonMods',
-        body: 'Welcome on our Skys' + (Config.devmode ? '\n you are running a Development BUILD' : `\nyou are running version ${Config.version}`)
-    }).show();
-
-
-    let pcd830 = Date.now();
-    try {mainWindow = wsframes.main();}
-    catch (error) {console.error("mainWindow", error);}
-    // mainWindow.show();
-
-
-    mainWindow.webContents.on("did-fail-load", (e, code, desc) => {
-        console.error("Load Fehler:", code, desc);
-    });
-    
-
-    ipcMain.once("clientReady", () => {
-        let rd = Date.now();
-
-        wsf.destroy();
-        mainWindow.show();
-
-        if (Config.devmode) new Notification({
-            title: 'HorizonMods',
-            body: `INTER: ${(rd - pcd829)}ms - Init: ${(rd - pcd830)}ms`
-        }).show();
-    });
-    
-    for (const [, device] of Object.entries(ccg.deviceList.data)) {
-        RegisterDevice(device);
-    }
-
-    if (Config.devmode) new Notification({
-        title: 'HorizonMods',
-        body: `CLReady: ${(Date.now() - pcd829)}ms`
-    }).show();
-
-    try {wss.startServer()}
-    catch {};
 });
 
 function RegisterDevice(dev) {

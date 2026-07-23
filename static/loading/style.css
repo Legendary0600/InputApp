@@ -1,0 +1,141 @@
+
+    *, *::after, *::before {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        
+        width: 100vw;
+        height: 100vh;
+        
+        background: black;
+        background: radial-gradient(circle at top, rgba(56, 189, 248, 0.08), transparent 45%),
+        radial-gradient(circle at 20% 20%, rgba(96, 212, 255, 0.08), transparent 35%), #0c0f18;
+            
+        overflow: hidden;
+        color: orange;
+        font-family: sans-serif;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        user-select: none;
+    }
+
+    .branding {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 45px;
+        animation: fade .8s;
+    }
+
+    .branding>div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .branding img {
+        width: 52px;
+        height: 52px;
+        object-fit: contain;
+    }
+
+    .branding strong {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+    }
+
+    .loader {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+
+        border: 4px solid #ffffff1a;
+        border-top-color: #cdb60c;
+        border-right-color: #cdb60c;
+
+        animation: spin 1s linear infinite;
+    }
+
+    
+    .inner {
+        position: absolute;
+        border-radius: 50%;
+        inset: 15px;
+        border: 2px solid #b7740f;
+        opacity: 0.6;
+    }
+    .inner2 {
+        inset: 7px;
+        animation-delay: 0.5s;
+    }
+    .inner1, .inner2 {
+        animation: pulse 1.2s infinite ease-in-out;
+    }
+
+
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes pulse{50%{transform:scale(1.15);opacity:1}0%,100%{transform:scale(.85);opacity:.35}}
+    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+    @keyframes spin {to {transform: rotate(360deg);}}
+
+    @keyframes pulse {
+        0%, 100% {transform: scale(0.8);opacity: 0.24;}
+        50% {transform: scale(1.2);opacity: 0.8;}
+    }
+
+    .creator,
+    .version {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+        font-size: .8rem;
+        color: #6b7280;
+        letter-spacing: .8px;
+    }
+
+    .creator {
+        right: none;
+        left: 18px;
+    }
+
+    .footer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 22px 26px;
+        border-top: 1px solid rgba(255, 255, 255, .06);
+        background: rgba(255, 255, 255, .03);
+        backdrop-filter: blur(12px);
+    }
+
+
+    .progressbar {
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height .35s ease, opacity .35s ease;
+    }
+
+    .progress {
+        height: 8px;
+        background: rgba(255, 255, 255, .08);
+        border-radius: 999px;
+        overflow: hidden;
+    }
+
+    .progress .bar {    
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #38bdf8, #facc15);
+        transition: width .25s ease;
+    }
