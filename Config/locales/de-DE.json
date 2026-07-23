@@ -117,4 +117,9 @@
     ,"PRESET_INPUT_NEW_NAME": "Neuer Name"
     ,"PRESET_INPUT_DELETE_CONFIRM": "Möchtest du das Preset '{{NAME}}' wirklich löschen?"
 
+
+    ,"INTERNAL_CHECK_FOR_UPDATES": "Suche nach Updates..."
+    ,"INTERNAL_UPDATE_FOUND": "Update gefunden: {{VERSION}}"
+    ,"INTERNAL_NO_UPDATES_FOUND": "Keine Updates verfügbar"
+    ,"INTERNAL_UPDATE_READY": "`Update {{VERSION}} fertig geladen`"
 }

@@ -30,15 +30,7 @@ if (!app.isPackaged) {
 
 let mainWindow;
 
-
-app.on("before-quit", (e) => {
-    // cDevice.Slots.forEach((entry, slot) => {
-    //     if (!entry?.device) return;
-    //     entry.device.removeAllListeners("data");
-    //     entry.device.close();
-    // });
-});
-
+// app.on("before-quit", (e) => {});
 app.on("window-all-closed", () => {
     // macOS Ausnahme
     if (process.platform !== "darwin") {
@@ -46,39 +38,38 @@ app.on("window-all-closed", () => {
     };
 });
 
-let pcd829 = Date.now();
 
 function checkForUpdates(screen) {
     return new Promise((resolve) => {
         const respond = (val) => setTimeout(() => resolve(val), 1000);
 
         autoUpdater.on("checking-for-update", () => {
-            screen.webContents.send("status", "Suche nach Updates...");
+            screen.webContents.send("status", L("INTERNAL_CHECK_FOR_UPDATES"));
         });
 
         autoUpdater.on("update-available", (info) => {
-            screen.webContents.send("status", `Update gefunden: ${info.version}`);
+            screen.webContents.send("status", L("INTERNAL_UPDATE_FOUND", null, {version: info.version}));
+            if (!app.isPackaged) return;
             setTimeout(() => autoUpdater.downloadUpdate(), 1000);
         });
 
         autoUpdater.on("update-not-available", () => {
-            screen.webContents.send("status", "Keine Updates verfügbar");
+            screen.webContents.send("status", L("INTERNAL_NO_UPDATES_FOUND"));
             respond(false);
         });
 
         autoUpdater.on("download-progress", (progress) => {
-            console.log("progress", progress);
             screen.webContents.send( "progress", progress.percent, true);
         });
 
         autoUpdater.on("update-downloaded", (info) => {
-            screen.webContents.send( "status", `Update ${info.version} fertig geladen` );
+            screen.webContents.send( "status", L("INTERNAL_UPDATE_READY", null, {version: info.version}));
             screen.webContents.send( "progress", false, false);
             respond(true);
         });
 
         autoUpdater.on("error", (err) => {
-            console.error("Updater Fehler:", err);
+            console.error(`updater error: ${err}`);
             respond(false);
         });
 
@@ -97,17 +88,12 @@ app.whenReady().then(async () => {
 
     new Notification({
         title: 'HorizonMods',
-        body: 'Welcome on our Skys' + (Config.devmode ? '\n you are running a Development BUILD' : `\nyou are running version ${Config.version}`)
+        body: 'Welcome on our Skys' + (Config.devmode ? '\n you are running a Development BUILD' : `\nyou are running version ${app.getVersion()}`)
     }).show();
 
 
-    let pcd830 = Date.now();
-    try {mainWindow = wsframes.main();}
-    catch (error) {console.error("mainWindow", error);}
-    
     splashScreen.destroy();
-    mainWindow.show();
-
+    mainWindow = wsframes.main();
     mainWindow.webContents.on("did-fail-load", (e, code, desc) => {
         console.error("Load Fehler:", code, desc);
     });
@@ -119,16 +105,8 @@ app.whenReady().then(async () => {
     try {wss.startServer()} catch {};
 });
 
-
-
-ipcMain.on("system:reloadUI", () => {
-    mainWindow.reload();
-});
-
-ipcMain.on("system:restart", () => {
-    app.relaunch();
-    app.quit();
-});
+ipcMain.on("system:reloadUI", () => mainWindow.reload());
+ipcMain.on("system:restart", () => {app.relaunch(); app.quit()});
 
 ipcMain.handle("requestData", (event, name, options) => {
     switch (name) {
@@ -148,12 +126,11 @@ ipcMain.handle("requestData", (event, name, options) => {
         }
 
         case "getLocales": return {
-            lang: Config.lang,
+            lang: Config.language,
             data: ccg.locales
         }
     }
 });
-
 
 ipcMain.handle("removeDevice", (event, data) => {
     const {vendorId, productId} = data;
@@ -165,7 +142,6 @@ ipcMain.handle("removeDevice", (event, data) => {
     return true;
 });
 
-
 ipcMain.handle("bindingEvent", (_, name, Interaction, slotId, data) => {
     switch(name) {
         case "Delete": return ccg.Mapping.remove(Interaction, slotId);
@@ -175,7 +151,6 @@ ipcMain.handle("bindingEvent", (_, name, Interaction, slotId, data) => {
 
     return true;
 });
-
 
 ipcMain.on("selectDevice", async (event, data) => {
     const device = sdl.joystick.devices.find((device) => (
@@ -196,17 +171,15 @@ ipcMain.on("selectDevice", async (event, data) => {
     ccg.deviceList.add(deviceConfig);
 });
 
-
-
 ipcMain.on("setLang", (event, lang) => {
-    let l = Config.lang;
-    Config.lang = lang ||="en-US";
-    if (Config.lang === l) return;
-    console.log(`Config updated from ${l} to ${Config.lang}`);
-
+    let l = Config.language;
+    Config.language = lang ||="en-US";
+    if (Config.language === l) return;
+    console.log(`Config updated from ${l} to ${Config.language}`);
+    
     ccg.saveConfig();
     app.relaunch();
-    app.exit(0);
+    app.quit();
 });
 
 ipcMain.on("openExternal", (event, url) => {

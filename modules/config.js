@@ -18,8 +18,7 @@ cdpaths.cInputs = path.join(cdpaths.app, "Config", "Intern", "Inputs.json");
 cdpaths.dlocales = path.join(cdpaths.app, "Config", "locales");
 
 globalThis.Config = await loadjson(cdpaths.config, {});
-Config.lang ||= "en-US";
-Config.version = 1.0;
+Config.language ||= "en-US";
 Config.devmode ??=false;
 Config.cfx ??= {};
 Config.cfx.port ??=3001;
@@ -245,8 +244,8 @@ deviceList.remove = (vendorId, productId) => {
 
 
 const localeData =  await Promise.all([
-    loadjson(path.join(cdpaths.locales, `${Config.lang}.json`), {}),
-    loadjson(path.join(cdpaths.dlocales, `${Config.lang}.json`), {})
+    loadjson(path.join(cdpaths.locales, `${Config.language}.json`), {}),
+    loadjson(path.join(cdpaths.dlocales, `${Config.language}.json`), {})
 ]);
 
 

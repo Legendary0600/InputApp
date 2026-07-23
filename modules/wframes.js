@@ -16,16 +16,22 @@ export const main = () => {
     });
 
     screen.loadFile('index.html');
-    if (Config.devmode) screen.webContents.openDevTools();
+    
+    if (!app.isPackaged) {
+        screen.webContents.openDevTools();
+    };
+
+    screen.on("ready-to-show", () => {
+        screen.show();
+    });
+
     return screen;
 }
 
 export const splashScreen = () => {
     const screen = new BrowserWindow({
-        // width: 400,
-        // height: 300,
-        width: 1200,
-        height: 800,
+        width: 400,
+        height: 300,
         frame: false,
         show: false,
         webPreferences: {
@@ -39,6 +45,15 @@ export const splashScreen = () => {
 
     screen.on("ready-to-show", () => {
         screen.show();
+    });
+
+    screen.webContents.on("did-fail-load", (event, errorCode, errorDescription, validatedURL) => {
+        console.error(
+            "Load Fehler:",
+            errorCode,
+            errorDescription,
+            validatedURL
+        );
     });
 
     return screen;
