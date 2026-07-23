@@ -2,8 +2,8 @@ const statusText  = document.querySelector(".status");
 const progressbar = document.querySelector(".progressbar");
 
 const progress  =   progressbar.querySelector(".bar");
-const percent   =   document.getElementById(".percent");
-const download  =   document.getElementById(".download");
+const percent   =   document.getElementById("percent");
+const download  =   document.getElementById("download");
 const version   =   document.querySelector(".version");
 
 
