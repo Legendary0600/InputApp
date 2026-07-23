@@ -24,11 +24,14 @@ window.CoreSplash.on("status", (event, state) => {
 });
 
 window.CoreSplash.on("version", (event, v) => {
-    console.log(v, "HELLLLLLLO");
     version.textContent=`Version ${v}`;
 });
 
 window.CoreSplash.on("progress", (event, percent, show) => {
     progressbar.classList.toggle("show", show);
     if (percent) setProgress(percent);
+});
+
+window.CoreSplash.on("launch", () => {
+    statusText.textContent = "Launching HorizonMods . . .";
 });

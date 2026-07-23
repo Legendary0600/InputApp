@@ -20,8 +20,14 @@ export const main = () => {
         screen.webContents.openDevTools();
     };
 
-    screen.on("ready-to-show", () => {
-        screen.show();
+    
+    screen.webContents.on("did-fail-load", (event, errorCode, errorDescription, validatedURL) => {
+        console.error(
+            "Load Fehler:",
+            errorCode,
+            errorDescription,
+            validatedURL
+        );
     });
 
     return screen;

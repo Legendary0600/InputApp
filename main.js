@@ -41,7 +41,10 @@ app.on("window-all-closed", () => {
 
 function checkForUpdates(screen) {
     return new Promise((resolve) => {
-        const respond = (val) => setTimeout(() => resolve(val), 1000);
+        const respond = (val) => {
+            screen.webContents.send("launch");
+            setTimeout(() => resolve(val), 1000);
+        };
 
         autoUpdater.on("checking-for-update", () => {
             screen.webContents.send("status", L("INTERNAL_CHECK_FOR_UPDATES"));
@@ -90,9 +93,8 @@ app.whenReady().then(async () => {
         body: 'Welcome on our Skys' + (app.isPackaged ? `\n you are running a Development BUILD\nversion: ${app.getVersion()}` : `\nyou are running version ${app.getVersion()}`)
     }).show();
 
-
-    splashScreen.destroy();
     mainWindow = wsframes.main();
+
     mainWindow.webContents.on("did-fail-load", (e, code, desc) => {
         console.error("Load Fehler:", code, desc);
     });
@@ -102,6 +104,9 @@ app.whenReady().then(async () => {
     }
 
     try {wss.startServer()} catch {};
+
+    mainWindow.show();
+    splashScreen.destroy();
 });
 
 ipcMain.on("system:reloadUI", () => mainWindow.reload());
