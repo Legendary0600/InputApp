@@ -1,0 +1,119 @@
+{
+
+    "IP_Vehicles": "Vehicle Mapping"
+    ,"IPVSteering": "Steering Wheel"
+    ,"IPVBreaks": "Brakes"
+    ,"IPVThrottle": "Throttle"
+    ,"IPVHandBreaks": "Handbrake"
+    ,"IPAInteractionBTNS": "Aircraft Interactions"
+
+    ,"IPVIndicatorL": "Left Indicator"
+    ,"IPVIndicatorR": "Right Indicator"
+    ,"IPVIndicatorX": "Hazard Lights"
+    ,"IPVHorn": "Horn"
+    ,"IPVHeadlights": "Headlights"
+    ,"IPVDistlight": "High Beam"
+
+    ,"IP_ELS": "ELS Control"
+
+    ,"joystick_x_1": "Collective Lever X Axis"
+    ,"joystick_y_1": "Collective Lever Y Axis"
+    ,"joystick_x_2": "Cyclic Stick X Axis"
+    ,"joystick_y_2": "Cyclic Stick Y Axis"
+    
+    ,"joystick_xm_1": "Yaw Left"
+    ,"joystick_ym_1": "Yaw Right"
+    ,"joystick_xm_2": "Increase Collective"
+    ,"joystick_ym_2": "Decrease Collective"
+
+    ,"joystick_xm_3": "Push Cyclic Stick Left"
+    ,"joystick_ym_3": "Push Cyclic Stick Right"
+
+    ,"joystick_xm_4": "Push Cyclic Stick Forward"
+    ,"joystick_ym_4": "Pull Cyclic Stick Backward"
+
+    ,"HMWinchDLC": "HorizonMods Winch System"
+    ,"tooltip_HMWinchDLC": "This requires the HorizonMods Winch System. Check if your FiveM server has this installed. Alternatively, you can check this in the in-game panel."
+
+    
+    ,"airvehicles movement joystick": "Aircraft Joystick Control"
+    ,"airvehicles movement buttons": "Aircraft Button Control"
+    ,"airvehicles interactions buttons": "Aircraft Joystick Interactions"
+    ,"airvehicles interactions joystick": "Aircraft Button Interactions"
+
+    ,"btn_winch_fold": "Fold Winch"
+    ,"btn_winding": "Winch"
+    ,"btn_searchlight": "Searchlight"
+    ,"btn_poslight": "Position Lights"
+    ,"btn_nvis": "Night Mode Display"
+    ,"btn_hover": "Toggle Hover Mode"
+    ,"btn_collights": "Collision Lights"
+
+    ,"joystick_camera_x": "Camera Movement X Axis"
+    ,"joystick_camera_y": "Camera Movement Y Axis"
+    ,"joystick_camera_xy": "Camera Movement X & Y Axis"
+    
+    ,"joystick_camera_xm1": "Move Camera Up"
+    ,"joystick_camera_ym1": "Move Camera Down"
+    ,"joystick_camera_xm2": "Move Camera Left"
+    ,"joystick_camera_ym2": "Move Camera Right"
+    ,"btn_camera_nvis": "Camera Night Vision"
+    ,"btn_camera_thermal": "Camera Thermal Vision"
+    ,"btn_camera_normal": "Camera Normal Vision"
+    ,"btn_camera_toggleview_1": "Toggle Camera 1"
+    ,"btn_camera_toggleview_2": "Toggle Camera 2"
+    ,"btn_camera_toggleview_3": "Toggle Camera 3"
+
+    ,"btn_camera_toggleview_desc": "Switch Camera Mode between Night Vision, Thermal and Normal"
+
+    ,"keybindRemoved": "[{{KEYBIND}}]: {{KEYNAME}} Removed"
+
+    ,"device_create_locale": "Create Language Config"
+    ,"device_load_locale": "Load Language Config"
+    ,"device_remove": "Remove"
+
+    ,"DEVICE_NOT_CONNECTED": "Device is not connected"
+
+    ,"tooltip_Inverted": "Invert Input"
+    ,"tooltip_Signed": "<strong>Signed</strong> Uses a signed value range from -1.0 to 1.0."
+    ,"tooltip_zeroSigned": "<strong>zeroSigned</strong> Converts a value range from -1.0 to 1.0 into 0.0 to 1.0."
+    ,"tooltip_Leverswitch": "Converts a <strong>Button</strong> into a <strong>Switch with a permanent On/Off state</strong>.<br>The switch state is transmitted as an input event to the game and must be processed by the application."
+    ,"tooltip_joystick_y_1_key": "If no <strong>Signed-capable input device</strong> is available, the <strong>Collective Lever Y Axis</strong> can alternatively be mapped using <strong>two separate button inputs</strong> for Increasing and Decreasing Collective."
+    ,"tooltip_joystick_x_1_key": "If no <strong>Signed-capable input device</strong> is available, the <strong>Collective Lever X Axis</strong> can alternatively be mapped using <strong>two separate button inputs</strong> for Yaw Left and Yaw Right."
+    ,"tooltip_joystick_x_2_key": "If no <strong>Signed-capable input device</strong> is available, the <strong>Cyclic Stick Y Axis</strong> can alternatively be mapped using <strong>two separate button inputs</strong> for Pitch Forward and Pitch Backward."
+    ,"tooltip_joystick_y_2_key": "If no <strong>Signed-capable input device</strong> is available, the <strong>Cyclic Stick X Axis</strong> can alternatively be mapped using <strong>two separate button inputs</strong> for Roll Left and Roll Right."
+    
+    ,"tooltip_joystick_x_1": "This corresponds to a <strong>Signed Axis</strong>,<br><strong>Example of a Signed Axis:</strong><br>1 → Yaw Right<br>0 → Neutral Position<br>-1 → Yaw Left<br><br>which maps both directions using a single input value.<br><strong>-1</strong> represents Yaw Left, <strong>0</strong> represents the Neutral Position, and <strong>1</strong> represents Yaw Right."
+    ,"tooltip_joystick_y_1": "This corresponds to <strong>Collective Increase</strong> and <strong>Collective Decrease</strong> as a combined <strong>Signed Axis</strong>.<br><strong>Example of a Signed Axis:</strong><br>1 → Increase Collective<br>0 → Neutral Position<br>-1 → Decrease Collective<br><br>Please note that some games require two separate control inputs.<br>This prevents a fully realistic collective control setup, as <strong>Increase Collective</strong> and <strong>Decrease Collective</strong> would affect each other.<br><br>In <strong>FiveM</strong>, this would correspond to the <strong>W</strong> and <strong>S</strong> keys being mapped as a single axis."
+    ,"tooltip_joystick_x_2": "This corresponds to a <strong>Signed Axis</strong>,<br><strong>Example of a Signed Axis:</strong><br>1 → Roll Right<br>0 → Neutral Position<br>-1 → Roll Left<br><br>which maps both directions using a single input value.<br><strong>-1</strong> represents Roll Left, <strong>0</strong> represents the Neutral Position, and <strong>1</strong> represents Roll Right."
+    ,"tooltip_joystick_y_2": "This corresponds to a <strong>Signed Axis</strong>,<br><strong>Example of a Signed Axis:</strong><br>1 → Pitch Forward<br>0 → Neutral Position<br>-1 → Pitch Backward<br><br>which maps both directions using a single input value.<br><strong>-1</strong> represents Pitch Backward, <strong>0</strong> represents the Neutral Position, and <strong>1</strong> represents Pitch Forward."
+
+    ,"tooltip_steering": "Steering requires a <strong>Signed Axis</strong>.<br><strong>Example:</strong><br>-1 → Steering Left<br>0 → Neutral Position<br>1 → Steering Right<br><br>Control using two separate button inputs is not possible here, as steering requires a continuous axis value."
+    ,"tooltip_joystick_camera_xy": "This is perfect if you use a Hat Switch on the controller, also known as a D-Pad."
+
+    ,"tooltip_els_switchkey": "Used to switch between Primary Siren and Secondary Siren. Please note that a supported system is required.<br>Depending on the system, there may be differences, for example when switching lights."
+    ,"tooltip_els_description": "Requires a compatible ELS system. Please note that for individual vehicles, such as GTA V based versions, only the Primary key may exist because they only have one stage."
+    ,"tooltip_camera_toggleview": "Requires a compatible camera. Depending on the helicopter and the system, this may not be available."
+    ,"tooltip_av_buttons_movements": "If the joystick-based axes do not suit your needs, you can assign everything again here as individual buttons. Keep in mind that an axis will then require 2 buttons.<br><strong>Collective Lever X</strong> would correspond to <strong>Yaw Left</strong> and <strong>Yaw Right</strong>.<br>Please check the additional information in the respective sections."
+    ,"tooltip_av_joystick_movements": "Here you can assign the complete axes. If an axis does not suit your needs, you can define the respective axis as buttons in the <strong>Aircraft Button Control</strong> section.<br>However, this requires 2 buttons per axis."
+    ,"tooltip_hatToggler": "Switches Hat Switch detection between complete Hat Switch mode and individual switch buttons."
+    ,"tooltip_stadia": "When disabled, no inputs are sent to the game. It is recommended to disable this while configuring to prevent incorrect inputs from being sent to the game."
+    ,"tooltip_toSignedAxis": "<strong>Unsigned to Signed Conversion</strong>.<br>Converts input values from a range between 0 and 1 into a range from -1 to 1.<br>This is useful for devices that send axis values without negative ranges but require centered axis control.<br>"
+
+    ,"hmwinch_btn_panelnavigation": "Panel Navigation Hat Switch"
+    ,"hmwinch_btn_panelnavigation_up": "Panel Navigation Up"
+    ,"hmwinch_btn_panelnavigation_down": "Panel Navigation Down"
+    ,"hmwinch_btn_panelnavigation_left": "Panel Navigation Left"
+    ,"hmwinch_btn_panelnavigation_right": "Panel Navigation Right"
+    ,"hmwinch_btn_panelnavigation_select": "Panel Navigation Select"
+    ,"hmwinch_btn_panelnavigation_back": "Panel Navigation Back"
+    ,"hmwinch_btn_attach": "Connect Hook"
+    ,"hmwinch_btn_entervehicle": "Enter Hook / Rescue Basket"
+    ,"hmwinch_btn_rescueseat": "Enter Rescue Basket"
+    ,"hmwinch_btn_bambiwater": "Spray Water"
+
+    ,"PRESET_NOT_SELECTED": "No Preset Selected"
+    ,"PRESET_INPUT_NAME": "Preset Name"
+    ,"PRESET_INPUT_NEW_NAME": "New Name"
+    ,"PRESET_INPUT_DELETE_CONFIRM": "Do you really want to delete the preset '{{NAME}}'?"
+}

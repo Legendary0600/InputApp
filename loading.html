@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HorzionMods - The Sky is Yours</title>
+</head>
+
+<style>
+
+    *, *::after, *::before {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        
+        width: 100vw;
+        height: 100vh;
+        
+        background: black;
+        background: radial-gradient(circle at top, rgba(56, 189, 248, 0.08), transparent 45%),
+        radial-gradient(circle at 20% 20%, rgba(96, 212, 255, 0.08), transparent 35%), #0c0f18;
+            
+        overflow: hidden;
+        color: orange;
+        font-family: sans-serif;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 25px;
+        user-select: none;
+    }
+
+    .branding {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .branding>div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .branding img {
+        width: 52px;
+        height: 52px;
+        object-fit: contain;
+    }
+
+    .branding strong {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+    }
+
+    .loader {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+
+        border: 4px solid #ffffff1a;
+        border-top-color: #cdb60c;
+        border-right-color: #cdb60c;
+
+        animation: spin 1s linear infinite;
+    }
+
+    
+    .inner {
+        position: absolute;
+        border-radius: 50%;
+        inset: 15px;
+        border: 2px solid #b7740f;
+        opacity: 0.6;
+    }
+    .inner2 {
+        inset: 7px;
+        animation-delay: 0.5s;
+    }
+    .inner1, .inner2 {
+        animation: pulse 1.2s infinite ease-in-out;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(0.8);
+            opacity: 0.24;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+    }
+
+</style>
+
+<body>
+    <div class="branding d03 x8752 x8956">
+        <img class="cimg" src="static/Core.png" alt="" />
+        <div>
+            <strong>HorizonMods</strong>
+            <small>The sky is yours</small>
+        </div>
+    </div>
+
+    
+    <div class="loader">
+        <div class="inner inner1"></div>
+        <div class="inner inner2"></div>
+    </div>
+
+</body>
+</html>

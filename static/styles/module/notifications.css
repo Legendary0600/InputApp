@@ -1,0 +1,115 @@
+.cnotifications {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    pointer-events: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    font-size: 85%;
+    padding: .25rem;
+    gap: 10px;
+}
+
+.cnotifications > .container {
+    position: relative;
+    padding: .25rem .5rem;
+    background: #0d171a;
+    border-radius: 3px;
+
+    min-width: 250px;
+    min-height: 50px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+
+
+    --nbgcs: #2f4e69;
+    --trans: 5s;
+
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-color: var(--nbgcs);
+
+    opacity: 0;
+    transform: scale(0);
+
+    pointer-events: all;
+
+}
+
+.cnotifications>.container.show {
+    opacity: 1;
+    transform: scale(1);
+    transition: .25s;
+}
+
+.cnotifications>.container.hide {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: .3s;
+}
+
+.cnotifications>.container>.inner {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+}
+
+.cnotifications>.container>.bar {
+    position: relative;
+    height: 3px;
+    width: 100%;
+    background: #000000;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.cnotifications>.container>.bar::after {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 100%;
+    background-color: color-mix(in srgb, var(--nbgcs) 35%, black);
+    transition: width var(--trans);
+}
+
+.cnotifications>.container.active>.bar::after {
+    width: 0%;
+}
+
+.cnotifications>.container>.bar:nth-child(1)::after {
+    right: 0;
+}
+
+
+.cnotifications > .container .cleft {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    flex-shrink: 0;
+}
+
+.cnotifications > .container .cleft>svg {
+    width: 16px;
+    height: 16px;
+}
+
+
+.cnotifications > .container .content {
+    /* background: #1b353f; */
+    padding: .25rem;
+    border-radius: 3px;
+    width: 100%;
+}

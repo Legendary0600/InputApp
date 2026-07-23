@@ -1,0 +1,103 @@
+.preset-selector summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px;
+
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    user-select: none;
+    justify-content: space-between;
+}
+
+
+.preset-selector summary::after {
+    content: "▾";
+    color: #9aa4b8;
+    transition: transform 0.2s ease;
+}
+
+.preset-selector:not([open]) > summary::after {
+    transform: rotate(-90deg);
+}
+
+
+.preset-selector .dropdown {
+    margin-top: 4px;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.new-preset {
+    border-bottom: 1px solid #444;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    padding: 10px;
+    color: #1781cf;
+}
+
+.preset-row {
+    display: grid;
+    grid-template-columns: 1fr 25px 25px;
+    align-items: center;
+
+    gap: 15px;
+    padding: 8px 10px;
+    border-bottom: 1px solid #3a3a3a;
+    color: #af9c9c;
+}
+
+.preset-row .name {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+}
+
+.preset-row.active .name {
+    color: orange;
+}
+
+.preset-row .name>svg {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.preset-row .option {
+    cursor: pointer;
+}
+
+.preset-row .name>svg:hover {color: #108cd7;}
+.preset-row .option.remove:hover {color: red;}
+.preset-row .option.edit:hover {color: #108cd7;}
+
+
+.preset-selector[data-disabled] .option,
+.preset-row .option[data-disabled] {
+    color: #3c3f3f;
+    cursor: not-allowed;
+}
+
+
+
+.preset-selector:not([data-disabled]) .new-preset:hover,
+.preset-selector:not([data-disabled]) .preset-row:hover {
+    background: #333131;
+}
+
+
+
+.preset-selector[data-disabled] summary,
+.preset-selector[data-disabled] .dropdown,
+.preset-selector[data-disabled] .new-preset {
+    background: #181717;
+    color: #3c3f3f;
+    cursor: not-allowed;
+}

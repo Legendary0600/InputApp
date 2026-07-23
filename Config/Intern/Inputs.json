@@ -1,0 +1,106 @@
+[
+    {
+        "locale": "IP_Vehicles",
+        "tooltip": false,
+        "group": [
+            {"name": "steering"        ,"locale": "IPVSteering"   ,"tooltip": "tooltip_steering"},
+            {"name": "breaks"          ,"locale": "IPVBreaks"     ,"tooltip": false},
+            {"name": "throttle"        ,"locale": "IPVThrottle"   ,"tooltip": false},
+
+            {"name": "hand_breaks"     ,"locale": "IPVHandBreaks" ,"tooltip": false},
+
+            {"name": "left_indicator"  ,"locale": "IPVIndicatorL" ,"tooltip": false},
+            {"name": "right_indicator" ,"locale": "IPVIndicatorR" ,"tooltip": false},
+            {"name": "warn_indicator"  ,"locale": "IPVIndicatorX" ,"tooltip": false},
+            {"name": "vhorn"           ,"locale": "IPVHorn"       ,"tooltip": false},
+            {"name": "vheadlight"      ,"locale": "IPVHeadlights" ,"tooltip": false},
+            {"name": "vdistlight"      ,"locale": "IPVDistlight"  ,"tooltip": false}
+        ]
+    },
+    {
+        "locale": "IP_ELS",
+        "tooltip": "tooltip_els_description",
+        "group": [
+            {"name": "ELS_PRIMARY"        ,"label": "ELS - Primary"         ,"tooltip": false},
+            {"name": "ELS_SECONDARY"      ,"label": "ELS - Secondary"       ,"tooltip": false},
+            {"name": "ELS_WARNING"        ,"label": "ELS - Warning"         ,"tooltip": false},
+            {"name": "ELS_SIREN_ONE"      ,"label": "ELS - Siren One"       ,"tooltip": false},
+            {"name": "ELS_SIREN_TWO"      ,"label": "ELS - Siren Two"       ,"tooltip": false},
+            {"name": "ELS_SIREN_THREE"    ,"label": "ELS - Siren Three"     ,"tooltip": false},
+            {"name": "ELS_SWITCH_KEY"     ,"label": "ELS - Switchkey"       ,"tooltip": "tooltip_els_switchkey"}
+        ]
+    },
+    {
+        "locale": "airvehicles movement joystick",
+        "tooltip": "tooltip_av_joystick_movements",
+        "group": [
+            {"name": "joystick_x_1", "locale": "joystick_x_1", "tooltip": "tooltip_joystick_x_1"},
+            {"name": "joystick_y_1", "locale": "joystick_y_1", "tooltip": "tooltip_joystick_y_1"},
+            {"name": "joystick_x_2", "locale": "joystick_x_2", "tooltip": "tooltip_joystick_x_2"},
+            {"name": "joystick_y_2", "locale": "joystick_y_2", "tooltip": "tooltip_joystick_y_2"}   
+        ]
+    },
+    {
+        "locale": "airvehicles movement buttons",
+        "tooltip": "tooltip_av_buttons_movements",
+        "group": [
+            {"name": "joystick_xm_1", "locale": "joystick_xm_1", "tooltip": "tooltip_joystick_x_1_key"},
+            {"name": "joystick_ym_1", "locale": "joystick_ym_1", "tooltip": "tooltip_joystick_x_1_key"},
+            {"name": "joystick_xm_2", "locale": "joystick_xm_2", "tooltip": "tooltip_joystick_y_1_key"},
+            {"name": "joystick_ym_2", "locale": "joystick_ym_2", "tooltip": "tooltip_joystick_y_1_key"},
+            {"name": "joystick_xm_3", "locale": "joystick_xm_3", "tooltip": "tooltip_joystick_y_2_key"},
+            {"name": "joystick_ym_3", "locale": "joystick_ym_3", "tooltip": "tooltip_joystick_y_2_key"},
+            {"name": "joystick_xm_4", "locale": "joystick_xm_4", "tooltip": "tooltip_joystick_x_2_key"},
+            {"name": "joystick_ym_4", "locale": "joystick_ym_4", "tooltip": "tooltip_joystick_x_2_key"}
+        ]
+    },
+    {
+        "locale": "IPAInteractionBTNS",
+        "tooltip": false,
+        "group": [
+            {"name": "btn_winch_fold"        ,"locale": "btn_winch_fold"        ,"tooltip": false},
+            {"name": "btn_searchlight"       ,"locale": "btn_searchlight"       ,"tooltip": false},
+            {"name": "btn_poslight"          ,"locale": "btn_poslight"          ,"tooltip": false},
+            {"name": "btn_nvis"              ,"locale": "btn_nvis"              ,"tooltip": false},
+            {"name": "btn_hover"             ,"locale": "btn_hover"             ,"tooltip": false},
+            {"name": "btn_collights"         ,"locale": "btn_collights"         ,"tooltip": false},
+            {"name": "joystick_camera_xm1"   ,"locale": "joystick_camera_xm1"   ,"tooltip": false},
+            {"name": "joystick_camera_ym1"   ,"locale": "joystick_camera_ym1"   ,"tooltip": false},
+            {"name": "joystick_camera_xm2"   ,"locale": "joystick_camera_xm2"   ,"tooltip": false},
+            {"name": "joystick_camera_ym2"   ,"locale": "joystick_camera_ym2"   ,"tooltip": false},
+            {"name": "btn_camera_nvis"       ,"locale": "btn_camera_nvis"       ,"tooltip": false},
+            {"name": "btn_camera_thermal"    ,"locale": "btn_camera_thermal"    ,"tooltip": false},
+            {"name": "btn_camera_normal"     ,"locale": "btn_camera_normal"     ,"tooltip": false},
+            {"name": "btn_camera_1"          ,"locale": "btn_camera_toggleview_1" ,"tooltip": "tooltip_camera_toggleview"},
+            {"name": "btn_camera_2"          ,"locale": "btn_camera_toggleview_2" ,"tooltip": "tooltip_camera_toggleview"},
+            {"name": "btn_camera_3"          ,"locale": "btn_camera_toggleview_3" ,"tooltip": "tooltip_camera_toggleview"}
+        ]
+    },
+    {
+        "locale": "airvehicles interactions joystick",
+        "tooltip": false,
+        "group": [
+            {"name": "joystick_camera_x" ,"locale": "joystick_camera_x" ,"tooltip": false},
+            {"name": "joystick_camera_y" ,"locale": "joystick_camera_y" ,"tooltip": false},
+            {"name": "joystick_camera_xy" ,"locale": "joystick_camera_xy" ,"tooltip": false}
+        ]
+    },
+    {
+        "locale": "HMWinchDLC",
+        "tooltip": "tooltip_HMWinchDLC",
+        "group": [
+            {"name": "hmwinch_btn_winding"                  ,"locale": "btn_winding"                                    ,"tooltip": false},
+            {"name": "hmwinch_btn_panelnavigation"          ,"locale": "hmwinch_btn_panelnavigation"                    ,"tooltip": false},
+            {"name": "hmwinch_btn_panelnavigation_up"       ,"locale": "hmwinch_btn_panelnavigation_up"                 ,"tooltip": false},
+            {"name": "hmwinch_btn_panelnavigation_down"     ,"locale": "hmwinch_btn_panelnavigation_down"               ,"tooltip": false},
+            {"name": "hmwinch_btn_panelnavigation_left"     ,"locale": "hmwinch_btn_panelnavigation_left"               ,"tooltip": false},
+            {"name": "hmwinch_btn_panelnavigation_right"    ,"locale": "hmwinch_btn_panelnavigation_right"              ,"tooltip": false},
+            {"name": "hmwinch_btn_panelnavigation_select"   ,"locale": "hmwinch_btn_panelnavigation_select"             ,"tooltip": false},
+            {"name": "hmwinch_btn_panelnavigation_back"     ,"locale": "hmwinch_btn_panelnavigation_back"               ,"tooltip": false},
+            {"name": "hmwinch_btn_attach"                   ,"locale": "hmwinch_btn_attach"                             ,"tooltip": false},
+            {"name": "hmwinch_btn_entervehicle"             ,"locale": "hmwinch_btn_entervehicle"                       ,"tooltip": false},
+            {"name": "hmwinch_btn_rescueseat"               ,"locale": "hmwinch_btn_rescueseat"                         ,"tooltip": false},
+            {"name": "hmwinch_btn_bambiwater"               ,"locale": "hmwinch_btn_bambiwater"                         ,"tooltip": false}
+        ]
+    }
+]

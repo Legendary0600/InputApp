@@ -1,0 +1,120 @@
+{
+
+    "IP_Vehicles": "Fahrzeug Mapping"
+    ,"IPVSteering": "Lenkrad"
+    ,"IPVBreaks": "Bremsen"
+    ,"IPVThrottle": "Beschleunigen"
+    ,"IPVHandBreaks": "Handbremse"
+    ,"IPAInteractionBTNS": "Luftfahrzeug Interaktionen"
+
+    ,"IPVIndicatorL": "Linker Blinker"
+    ,"IPVIndicatorR": "Rechter Blinker"
+    ,"IPVIndicatorX": "Warn Blinker"
+    ,"IPVHorn": "Hupe"
+    ,"IPVHeadlights": "Scheinwerfer"
+    ,"IPVDistlight": "Fernlicht"
+
+    ,"IP_ELS": "ELS Steuerung"
+
+    ,"joystick_x_1": "Kollektivhebel X Achse"
+    ,"joystick_y_1": "Kollektivhebel Y Achse"
+    ,"joystick_x_2": "Zyklischer Steuerknüppel X Achse"
+    ,"joystick_y_2": "Zyklischer Steuerknüppel Y Achse"
+    
+    ,"joystick_xm_1": "Gieren nach links"
+    ,"joystick_ym_1": "Gieren nach rechts"
+    ,"joystick_xm_2": "Kollektiv erhöhe"
+    ,"joystick_ym_2": "Kollektiv veringern"
+
+    ,"joystick_xm_3": "Zyklischen Steuerknüppel nach links drücken"
+    ,"joystick_ym_3": "Zyklischen Steuerknüppel nach rechts drücken"
+
+    ,"joystick_xm_4": "Zyklischer Steuerknüppel nach vorne drücken"
+    ,"joystick_ym_4": "Zyklischer Steuerknüppel nach hinten ziehen"
+
+    ,"HMWinchDLC": "HorizonMods Winden System"
+    ,"tooltip_HMWinchDLC": "Dies Erfordert das Winden System von HorizonMods, Prüfe ob dein FiveM Server dieses Besitzt. Alternativ kannst du auch im Ingame Panel dies Nachsehen."
+
+    
+    ,"airvehicles movement joystick": "Luftfahrzeuge Steuerung Joystick"
+    ,"airvehicles movement buttons": "Luftfahrzeuge Steuerung Knöpfe"
+    ,"airvehicles interactions buttons": "Luftfahrzeuge Interaktion Joystick"
+    ,"airvehicles interactions joystick": "Luftfahrzeuge Interaktion Knöpfe"
+
+    ,"btn_winch_fold": "Winde Umklappen"
+    ,"btn_winding": "Winden"
+    ,"btn_searchlight": "Suchlicht"
+    ,"btn_poslight": "Positions Lichter"
+    ,"btn_nvis": "Display Nachtmodus"
+    ,"btn_hover": "Hover Modus Umschalten"
+    ,"btn_collights": "Collisions Lichter"
+
+    ,"joystick_camera_x": "Kamera Bewegung X Achse"
+    ,"joystick_camera_y": "Kamera Bewegung Y Achse"
+    ,"joystick_camera_xy": "Kamera Bewegung X & Y Achse"
+    
+    ,"joystick_camera_xm1": "Kamera Bewegung Hoch"
+    ,"joystick_camera_ym1": "Kamera Bewegung Runter"
+    ,"joystick_camera_xm2": "Kamera Bewegung Links"
+    ,"joystick_camera_ym2": "Kamera Bewegung Rechts"
+    ,"btn_camera_nvis": "Kamera Nachtsicht"
+    ,"btn_camera_thermal": "Kamera Thermalsicht"
+    ,"btn_camera_normal": "Kamera Normale Sicht"
+    ,"btn_camera_toggleview_1": "Kamera 1 Umschalten"
+    ,"btn_camera_toggleview_2": "Kamera 2 Umschalten"
+    ,"btn_camera_toggleview_3": "Kamera 3 Umschalten"
+
+    ,"btn_camera_toggleview_desc": "Kamera Modus zwischen Nachtsicht, Thermal und Normal umschalten"
+
+    ,"keybindRemoved": "[{{KEYBIND}}]: {{KEYNAME}} Entfernt"
+
+    ,"device_create_locale": "Sprachconfig Erstellen"
+    ,"device_load_locale": "Sprachconfig Laden"
+    ,"device_remove": "Entfernen"
+
+    ,"DEVICE_NOT_CONNECTED": "Gerät ist nicht verbunden"
+
+    ,"tooltip_Inverted": "Input Invertieren"
+    ,"tooltip_Signed": "<strong>Signed</strong> Verwendet einen vorzeichenbehafteten Wertebereich von -1.0 bis 1.0."
+    ,"tooltip_zeroSigned": "<strong>zeroSigned</strong> Wandelt einen Wertebereich von -1.0 bis 1.0 in 0.0 bis 1.0 um."
+    ,"tooltip_Leverswitch": "Wandelt einen <strong>Taster</strong> in einen <strong>Schalter mit dauerhaftem Ein-/Aus-Zustand</strong> um.<br>Der Schaltzustand wird als Eingabeereignis an das Spiel übertragen und muss von der Anwendung verarbeitet werden."
+    ,"tooltip_joystick_y_1_key": "Falls kein <strong>Signed-fähiges Eingabegerät</strong> vorhanden ist, kann die <strong>Kollektivhebel Y-Achse</strong> alternativ über <strong>zwei getrennte Tasten-Eingaben</strong> für Kollektiv Erhöhen und Kollektiv Verringern abgebildet werden."
+    ,"tooltip_joystick_x_1_key": "Falls kein <strong>Signed-fähiges Eingabegerät</strong> vorhanden ist, kann die <strong>Kollektivhebel X-Achse</strong> alternativ über <strong>zwei getrennte Tasten-Eingaben</strong> für Gieren Links und Gieren Rechts abgebildet werden."
+    ,"tooltip_joystick_x_2_key": "Falls kein <strong>Signed-fähiges Eingabegerät</strong> vorhanden ist, kann die <strong>Zyklischer Steuerknüppel Y-Achse</strong> alternativ über <strong>zwei getrennte Tasten-Eingaben</strong> für Neigen Vorwärts und Neigen Rückwärts abgebildet werden."
+    ,"tooltip_joystick_y_2_key": "Falls kein <strong>Signed-fähiges Eingabegerät</strong> vorhanden ist, kann die <strong>Zyklischer Steuerknüppel X-Achse</strong> alternativ über <strong>zwei getrennte Tasten-Eingaben</strong> für Rollen Links und Rollen Rechts abgebildet werden."
+    
+    ,"tooltip_joystick_x_1": "Dies entspricht einer <strong>Signed-Achse</strong>,<br><strong>Beispiel einer Signed-Achse:</strong><br>1 → Gieren Rechts<br>0 → Neutralstellung<br>-1 → Gieren Links<br><br> welche beide Richtungen über einen gemeinsamen Eingabewert abbildet.<br>Dabei steht <strong>-1</strong> für Gieren Links, <strong>0</strong> für die Neutralstellung und <strong>1</strong> für Gieren Rechts."
+    ,"tooltip_joystick_y_1": "Dies entspricht <strong>Kollektiv Erhöhen</strong> und <strong>Kollektiv Verringern</strong> als eine gemeinsame <strong>Signed-Achse</strong>.<br><strong>Beispiel einer Signed-Achse:</strong><br>1 → Kollektiv Erhöhen<br>0 → Neutralstellung<br>-1 → Kollektiv Veringern<br><br>Beachte, dass einige Spiele zwei separate Control Inputs benötigen.<br>Dadurch kann keine vollständig realistische Kollektiv-Steuerung verwendet werden, da sich <strong>Kollektiv Erhöhen</strong> und <strong>Kollektiv Verringern</strong> gegenseitig beeinflussen würden.<br><br>In <strong>FiveM</strong> würde dies beispielsweise den Tasten <strong>W</strong> und <strong>S</strong> entsprechen, die als eine gemeinsame Achse abgebildet werden."
+    ,"tooltip_joystick_x_2": "Dies entspricht einer <strong>Signed-Achse</strong>,<br><strong>Beispiel einer Signed-Achse:</strong><br>1 → Rollen Rechts<br>0 → Neutralstellung<br>-1 → Rollen Links<br><br>welche beide Richtungen über einen gemeinsamen Eingabewert abbildet.<br>Dabei steht <strong>-1</strong> für Rollen Links, <strong>0</strong> für die Neutralstellung und <strong>1</strong> für Rollen Rechts."
+    ,"tooltip_joystick_y_2": "Dies entspricht einer <strong>Signed-Achse</strong>,<br><strong>Beispiel einer Signed-Achse:</strong><br>1 → Neigen Vorwärts<br>0 → Neutralstellung<br>-1 → Neigen Rückwärts<br><br>welche beide Richtungen über einen gemeinsamen Eingabewert abbildet.<br>Dabei steht <strong>-1</strong> für Neigen Rückwärts, <strong>0</strong> für die Neutralstellung und <strong>1</strong> für Neigen Vorwärts."
+
+    ,"tooltip_steering": "Für die Lenkung wird eine <strong>Signed-Achse</strong> benötigt.<br><strong>Beispiel:</strong><br>-1 → Lenken Links<br>0 → Neutralstellung<br>1 → Lenken Rechts<br><br>Eine Steuerung über zwei getrennte Tasten-Eingaben ist hier nicht möglich, da die Lenkung einen kontinuierlichen Achsenwert benötigt."
+    ,"tooltip_joystick_camera_xy": "This is perfect if you use a Hat Switch on the controller, also known as a D-Pad."
+
+    ,"tooltip_els_switchkey": "Wird verwendet um Zwischen Primär Sirene und Sekundär Sirene umzuschalten, Beachtet das es ein Unterstützes System Benötigt. <br>Beachte je nach System kann es auch abweichungen geben bsp. für Licht Umschaltungen"
+    ,"tooltip_els_description": "Erfordert ein Kompatibles ELS System, Beachtet das bei einzelnen Fahrzeugen bsp. einer GTA V Basierten version es nur die Primär Taste Geben könnte aufgrund das es nur eine Stage Gibt"
+    ,"tooltip_camera_toggleview": "Erfordert Eine Kompatible Kamera, Je nach Helikopter & Je nach System kann dies nicht Verfügbar sein."
+    ,"tooltip_av_buttons_movements": "Sollten die Joystick Bezogenen Achsen dir nicht Zusprechen kannst du hier Nochmals Alles als Einzelne Knöpfe Besetzen bedenke das eine Achse dann dementsprechend 2 Knöpfe hat.<br><strong>Kollektivhebel X</strong> würde dann <strong>Gieren Links</strong> und <strong>Gieren Rechts</strong> Entsprechen<br>Bitte beachte weitere Hinweise bei dem jeweiligen bereichen"
+    ,"tooltip_av_joystick_movements": "Hier kannst du die Kompletten Achsen Zuweisen, Sollte eine Achse dir nicht Zusagen kannst du die Jeweilige achse auch im bereich <strong>Luftfahrzeuge Steuerung Knöpfe</strong> als Knöpfe Definieren.<br>Dafür Sind dann aber pro Achse 2 Knöpfe Notwendig"
+    ,"tooltip_hatToggler": "Schaltet einen Hat Switch erkennung um zwischen Kompletten hat Switch und Einzelnen Switch Buttons"
+    ,"tooltip_stadia": "Bei Deaktivierung werden keine Eingaben an das Spiel gesendet, ist zum Einrichten Empfohlen auszuschalten um keine Falschen Eingaben an das Spiel zu senden."
+    ,"tooltip_toSignedAxis": "<strong>Unsigned zu Signed Umwandlung</strong>.<br>Konvertiert Eingabewerte von einem Bereich zwischen 0 und 1 in einen Bereich von -1 bis 1.<br>Dies ist hilfreich für Geräte, die Achsenwerte ohne negative Bereiche senden, aber eine zentrierte Steuerung benötigen.<br>"
+
+    ,"hmwinch_btn_panelnavigation": "Panel Navigation Hat Switch"
+    ,"hmwinch_btn_panelnavigation_up": "Panel Navigation Hoch"
+    ,"hmwinch_btn_panelnavigation_down": "Panel Navigation Runter"
+    ,"hmwinch_btn_panelnavigation_left": "Panel Navigation Links"
+    ,"hmwinch_btn_panelnavigation_right": "Panel Navigation Rechts"
+    ,"hmwinch_btn_panelnavigation_select": "Panel Navigation Auswahl"
+    ,"hmwinch_btn_panelnavigation_back": "Panel Navigation Zurück"
+    ,"hmwinch_btn_attach": "Hacken Verbinden"
+    ,"hmwinch_btn_entervehicle": "Hacken / Rescueprop Betreten"
+    ,"hmwinch_btn_rescueseat": "Rescueprop Betreten"
+    ,"hmwinch_btn_bambiwater": "Wasser Absprühen"
+
+    ,"PRESET_NOT_SELECTED": "Kein Preset Ausgewählt"
+    ,"PRESET_INPUT_NAME": "Name des Presents"
+    ,"PRESET_INPUT_NEW_NAME": "Neuer Name"
+    ,"PRESET_INPUT_DELETE_CONFIRM": "Möchtest du das Preset '{{NAME}}' wirklich löschen?"
+
+}
