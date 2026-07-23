@@ -1,6 +1,6 @@
 {
   "name": "hm-ihp",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Horizon Input App",
   "main": "main.js",
   "type": "module",
