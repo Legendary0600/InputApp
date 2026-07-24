@@ -19,6 +19,7 @@ jobs:
           -H "Content-Type: application/json" \
           -X POST \
           -d '{
+            "contens": "<@&1530192705278181596>",
             "embeds": [
               {
                 "title": "🚀 New Release Available",
