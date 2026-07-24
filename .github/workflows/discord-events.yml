@@ -1,12 +1,20 @@
-name: Discord GitHub Events
+name: Discord All GitHub Events
 
 on:
   push:
   pull_request:
+  pull_request_review:
   issues:
-    types:
-      - opened
-      - closed
+  issue_comment:
+  release:
+  create:
+  delete:
+  fork:
+  watch:
+  star:
+  workflow_run:
+  discussion:
+  discussion_comment:
 
 jobs:
   discord:
@@ -30,8 +38,16 @@ jobs:
                     "name": "User",
                     "value": "${{ github.actor }}",
                     "inline": true
+                  },
+                  {
+                    "name": "Action",
+                    "value": "${{ github.event.action }}",
+                    "inline": true
                   }
-                ]
+                ],
+                "footer": {
+                  "text": "HorizonMods Input App"
+                }
               }
             ]
           }' \
