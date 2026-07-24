@@ -1,0 +1,46 @@
+name: Discord Release Notification
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  discord:
+    name: Send Discord Notification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send release message to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl \
+          -H "Content-Type: application/json" \
+          -X POST \
+          -d '{
+            "embeds": [
+              {
+                "title": "🚀 New Release Available",
+                "description": "**HorizonMods Input App ${{ github.event.release.tag_name }}** has been released!",
+                "url": "${{ github.event.release.html_url }}",
+                "fields": [
+                  {
+                    "name": "📦 Version",
+                    "value": "${{ github.event.release.tag_name }}",
+                    "inline": true
+                  },
+                  {
+                    "name": "👤 Author",
+                    "value": "${{ github.event.release.author.login }}",
+                    "inline": true
+                  }
+                ],
+                "footer": {
+                  "text": "HorizonMods Input App"
+                },
+                "timestamp": "${{ github.event.release.published_at }}"
+              }
+            ]
+          }' \
+          "$DISCORD_WEBHOOK"
