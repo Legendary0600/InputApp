@@ -1,0 +1,38 @@
+name: Discord GitHub Events
+
+on:
+  push:
+  pull_request:
+  issues:
+    types:
+      - opened
+      - closed
+
+jobs:
+  discord:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send event notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_EVENTS }}
+        run: |
+          curl \
+          -H "Content-Type: application/json" \
+          -X POST \
+          -d '{
+            "embeds": [
+              {
+                "title": "📢 GitHub Event",
+                "description": "Event: **${{ github.event_name }}**\nRepository: **${{ github.repository }}**",
+                "fields": [
+                  {
+                    "name": "User",
+                    "value": "${{ github.actor }}",
+                    "inline": true
+                  }
+                ]
+              }
+            ]
+          }' \
+          "$DISCORD_WEBHOOK"
