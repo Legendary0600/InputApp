@@ -29,7 +29,7 @@ if (!app.isPackaged) autoUpdater.forceDevUpdateConfig = true;
 
 let mainWindow;
 app.on("before-quit", (e) => {
-    for (const code, device of deviceInteraction.devices.entries()) {
+    for (const [code, device] of deviceInteraction.devices.entries()) {
         device.close()
     };
 });
