@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Send release message to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_RELEASE }}
         run: |
           curl \
           -H "Content-Type: application/json" \
