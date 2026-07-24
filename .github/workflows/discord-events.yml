@@ -1,4 +1,4 @@
-name: Discord All GitHub Events
+name: Discord GitHub Events
 
 on:
   push:
@@ -9,9 +9,6 @@ on:
   release:
   create:
   delete:
-  fork:
-  watch:
-  workflow_run:
   discussion:
   discussion_comment:
 
