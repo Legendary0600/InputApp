@@ -1,6 +1,6 @@
 import { app, Notification } from "electron";
 import RPC from "discord-rpc";
-import * as ccg from "./config.js";
+import * as cfg from "./config.js";
 
 const basePresence = {
     // details: "HorizonMods App",
@@ -21,7 +21,7 @@ if (!app.requestSingleInstanceLock()) {
 };
 
 let DiscordRPC = null;
-let {enable: Enable, notify: canNotify} = Config.discordPresence;
+let {enable: Enable, notify: canNotify} = cfg.Config.discordPresence;
 
 function SetupDiscordRPC() {
     if (!Enable || DiscordRPC) return;
@@ -90,8 +90,8 @@ export function toggle(value) {
     };
     
 
-    Config.discordPresence.enable = Enable;
-    ccg.save.Config();
+    cfg.Config.discordPresence.enable = Enable;
+    cfg.save.Config();
 }
 
 app.on("before-quit", (e) => {

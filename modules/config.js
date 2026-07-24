@@ -17,7 +17,7 @@ cdpaths.devLocales = path.join(cdpaths.docs, "HorizonMods", "InputHelper", "loca
 cdpaths.cInputs = path.join(cdpaths.app, "Config", "Intern", "Inputs.json");
 cdpaths.dlocales = path.join(cdpaths.app, "Config", "locales");
 
-globalThis.Config = await loadjson(cdpaths.config, {});
+export const Config = await loadjson(cdpaths.config, {});
 Config.language ||= "en-US";
 Config.cfx ??= {};
 Config.cfx.port ??=3001;
@@ -39,7 +39,6 @@ export const saveConfig = () => {
 app.whenReady().then(saveConfig);
 
 export const InputFields = loadjson(cdpaths.cInputs, []);
-
 export const Mapping = {};
 Mapping.data = await loadjson(cdpaths.mapping, {});
 Mapping.data.presets ??= {};
@@ -59,8 +58,6 @@ Mapping.save = () => {
 Mapping.getLinked = (vendorId, productId, ...keyNames) => {
     const preset = Mapping.getCurrentPreset();
     if (!preset) return;
-
-
 
     const result = [];
     for (const keyName of keyNames) {

@@ -1,5 +1,5 @@
 import {WebSocketServer} from "ws";
-import {saveConfig} from "./config.js";
+import {saveConfig, Config} from "./config.js";
 
 var wss = null;
 var Sockets = [];

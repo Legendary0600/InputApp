@@ -9,7 +9,8 @@ process.on("unhandledRejection", err => {
 
 import sdl from "@kmamal/sdl";
 
-import * as ccg from "./modules/config.js";
+import * as cfg from "./modules/config.js";
+import { Config } from "./modules/config.js";
 import {app, ipcMain, BrowserWindow, Notification, shell} from "electron";
 import updater from "electron-updater";
 import * as wsframes from "./modules/wframes.js";
@@ -23,14 +24,16 @@ import loadJson from "./modules/loadjson.js";
 const {autoUpdater} = updater;
 autoUpdater.autoDownload = false;
 
-if (!app.isPackaged) {
-    autoUpdater.forceDevUpdateConfig = true;
-};
+if (!app.isPackaged) autoUpdater.forceDevUpdateConfig = true;
 
 
 let mainWindow;
+app.on("before-quit", (e) => {
+    for (const code, device of deviceInteraction.devices.entries()) {
+        device.close()
+    };
+});
 
-// app.on("before-quit", (e) => {});
 app.on("window-all-closed", () => {
     // macOS Ausnahme
     if (process.platform !== "darwin") {
@@ -86,7 +89,7 @@ function checkForUpdates(screen) {
 app.whenReady().then(async () => {
     const splashScreen = wsframes.splashScreen();
     const response = await checkForUpdates(splashScreen);
-    if (app.isPackaged && response) return autoUpdater.quitAndInstall();
+    if (app.isPackaged && response) return autoUpdater.quitAndInstall(true, false);
 
     new Notification({
         title: 'HorizonMods',
@@ -99,7 +102,7 @@ app.whenReady().then(async () => {
         console.error("Load Fehler:", code, desc);
     });
     
-    for (const [, device] of Object.entries(ccg.deviceList.data)) {
+    for (const [, device] of Object.entries(cfg.deviceList.data)) {
         RegisterDevice(device);
     }
 
@@ -114,12 +117,12 @@ ipcMain.on("system:restart", () => {app.relaunch(); app.quit()});
 
 ipcMain.handle("requestData", (event, name, options) => {
     switch (name) {
-        case "locales": return ccg.locales;
-        case "Inputs": return ccg.InputFields;
+        case "locales": return cfg.locales;
+        case "Inputs": return cfg.InputFields;
         case "Stadia": return Config.Stadia;
 
         case "currentDevices": return deviceInteraction.currentDevices();
-        case "currentMappings": return ccg.Mapping.preset.getMapping();
+        case "currentMappings": return cfg.Mapping.preset.getMapping();
 
         case "devices": {
             return sdl.joystick.devices.map(device => ({
@@ -131,7 +134,7 @@ ipcMain.handle("requestData", (event, name, options) => {
 
         case "getLocales": return {
             lang: Config.language,
-            data: ccg.locales
+            data: cfg.locales
         }
     }
 });
@@ -142,15 +145,15 @@ ipcMain.handle("removeDevice", (event, data) => {
     if (!device) return false;
 
     device.close();
-    ccg.deviceList.remove(vendorId, productId);
+    cfg.deviceList.remove(vendorId, productId);
     return true;
 });
 
 ipcMain.handle("bindingEvent", (_, name, Interaction, slotId, data) => {
     switch(name) {
-        case "Delete": return ccg.Mapping.remove(Interaction, slotId);
-        case "Place": return ccg.Mapping.add(Interaction, slotId, data.vendorId, data.productId, data.keyCode, data.options);
-        case "Update": return ccg.Mapping.update(Interaction, slotId, data)
+        case "Delete": return cfg.Mapping.remove(Interaction, slotId);
+        case "Place": return cfg.Mapping.add(Interaction, slotId, data.vendorId, data.productId, data.keyCode, data.options);
+        case "Update": return cfg.Mapping.update(Interaction, slotId, data)
     }
 
     return true;
@@ -162,8 +165,6 @@ ipcMain.on("selectDevice", async (event, data) => {
         device.vendor == data.vendorId
     ));
 
-
-
     if (!device) return;
     const deviceConfig = {
         vendorId: device.vendor,
@@ -172,7 +173,7 @@ ipcMain.on("selectDevice", async (event, data) => {
     };
 
     RegisterDevice(deviceConfig);
-    ccg.deviceList.add(deviceConfig);
+    cfg.deviceList.add(deviceConfig);
 });
 
 ipcMain.on("setLang", (event, lang) => {
@@ -181,7 +182,7 @@ ipcMain.on("setLang", (event, lang) => {
     if (Config.language === l) return;
     console.log(`Config updated from ${l} to ${Config.language}`);
     
-    ccg.saveConfig();
+    cfg.saveConfig();
     app.relaunch();
     app.quit();
 });
@@ -301,7 +302,6 @@ function RegisterDevice(dev) {
     }
 }
 
-
 ipcMain.on("deiveCreateLocales", async (event, dev) => {
     const device = deviceInteraction.findDevice(dev.vendorId, dev.productId);
     if (!device) return;
@@ -317,25 +317,21 @@ ipcMain.on("deiveLoadLocales", async (event, dev) => {
         vendorId: dev.vendorId,
         productId: dev.productId,
         locales: device.locales,
-        maps: ccg.Mapping.data
+        maps: cfg.Mapping.data
     });
 });
 
-
 ipcMain.handle("presets", (event, data) => {
     switch (data.action) {
-        case "add": return ccg.Mapping.preset.add(data.name);
-        case "remove": return ccg.Mapping.preset.remove(data.id);
-        case "updateName": return ccg.Mapping.preset.updateName(data.id, data.name);
-        case "loadIdNames": return ccg.Mapping.preset.getIdNames();
-        case "selectPreset": return ccg.Mapping.preset.select(data.id);
+        case "add": return cfg.Mapping.preset.add(data.name);
+        case "remove": return cfg.Mapping.preset.remove(data.id);
+        case "updateName": return cfg.Mapping.preset.updateName(data.id, data.name);
+        case "loadIdNames": return cfg.Mapping.preset.getIdNames();
+        case "selectPreset": return cfg.Mapping.preset.select(data.id);
     }
 });
 
 ipcMain.on("stadiaUpdate", (event, state) => {
-    console.log("state", state);
-
-
     Config.Stadia = state;
-    ccg.saveConfig();
+    cfg.saveConfig();
 });
